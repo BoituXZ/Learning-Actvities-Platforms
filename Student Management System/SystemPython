@@ -39,7 +39,13 @@ def remove_students(id):
 def update_students(id, new_name, new_role, new_gender, new_status):
     conn = sqlite3.connect('Students.db')
     cursor = conn.cursor()
-    cursor.execute('DELETE FROM Students WHERE id = ?', (id,))
+    cursor.execute('UPDATE Students SET name = ?, role = ?, gender = ?, status= ? WHERE id = ?',(
+new_name, new_role, new_ gender, new_status(id,))
     conn.commit()
     conn.close()
-        
+def id_exists(id):
+conn = sqlite3.connect('Students.db')
+    cursor = conn.cursor()
+    cursor.execute(SELECT COUNT(*) FROM Employees WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
