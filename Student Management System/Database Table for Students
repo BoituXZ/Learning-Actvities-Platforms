@@ -52,4 +52,4 @@ def id_exists(id):
     conn.close()
     return result[0] > 0
 
-creat_table()
+create_table()
