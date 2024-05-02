@@ -43,9 +43,13 @@ def update_students(id, new_name, new_role, new_gender, new_status):
 new_name, new_role, new_ gender, new_status(id,))
     conn.commit()
     conn.close()
+    
 def id_exists(id):
     conn = sqlite3.connect('Students.db')
     cursor = conn.cursor()
     cursor.execute('SELECT COUNT(*) FROM Employees WHERE id = ?', (id,))
-    conn.commit()
+    result = cursor.fetchone()
     conn.close()
+    return result[0] > 0
+
+creat_table()
