@@ -1,0 +1,36 @@
+.main{
+  background-color:grey;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+}
+
+.img-div img{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  max-width: 100%;
+  margin: auto;
+
+}
+
+.img-caption{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:grey;
+}
+
+.tribute-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: green;
+
+}
