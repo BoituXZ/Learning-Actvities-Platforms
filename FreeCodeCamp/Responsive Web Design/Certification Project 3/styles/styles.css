@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar-container{
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    gap: 10px;
+    height: 100%;
+    border: solid blue 2px;
+}
