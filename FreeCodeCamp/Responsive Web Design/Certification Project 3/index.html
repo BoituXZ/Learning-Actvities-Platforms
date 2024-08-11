@@ -7,23 +7,360 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-    <div class="nav-bar-container">
-        <div class="nav-bar">
-            <div class="nav-bar-title"><h1>Wielding the Snake</h1></div>
+    <header>
+        <div class="nav-bar-container">
+            <nav id="navbar">
+                <div class="nav-bar">
+                    <div class="nav-bar-title"><header><h1>Speaking Snake</h1></header></div>
+                
+                <div class="nav-bar-content">
+                    <a href="#Objects,_values_and_types" class="nav-link">Objects, values and types</a>
+                    <a href="#The_standard_type_hierarchy" class="nav-link">The standard type hierarchy</a>
+                    <a href="#Expressions"class="nav-link">Expressions</a>
+                    <a href="#Parenthesized forms">Parenthesized forms</a>
+                    <a href="#Generator expressions">Generator expressions</a>
+                    <a href="#Sequences"class="nav-link">Sequences</a>
+                    <a href="#Immutable sequences">Immutable sequences</a>
+                    <a href="#Mutable sequences">Mutable sequences</a>
+                    <a href="#numbers_Number"class="nav-link">numbers Number</a>
+                    <a href="#numbers.Integral">numbers.Integral</a>
+                    <a href="#numbers.Real">numbers.Real</a>
+                </div>
+                </div>
+            </nav>
         </div>
-        <div class="nav-bar-content">
-            <span>Paragraph 1</span>
-            <span>Paragraph 2</span>
-            <span>Paragraph 3</span>
-            <span>Paragraph 4</span>
-            <span>Paragraph 5</span>
-            <span>Paragraph 6</span>
-            <span>Paragraph 7</span>
-            <span>Paragraph 8</span>
-            <span>Paragraph 9</span>
-            <span>Paragraph 10</span>
-            <span>Paragraph 11</span>
-        </div>
-    </div>
+    </header>
+    <main id="main-doc">
+        <section class="main-section" id="Objects,_values_and_types">
+            <header>Objects, values and types</header><br>
+            <p id="someId">Objects are Python’s abstraction for data. All data in a Python program is represented by objects or by relations between objects. (In a sense, and in conformance to Von Neumann’s model of a “stored program computer”, code is also represented by objects.)
+
+                Every object has an identity, a type and a value. An object’s identity never changes once it has been created; you may think of it as the object’s address in memory. <br>The is operator compares the identity of two objects; the id() function returns an integer representing its identity.<br>
+                <code>x+y = 5</code><br>
+                <code>x+y = 2</code><br>
+                <code>x+y = 3</code><br>
+                <code>x+y = 7</code><br>
+                <code>x+y = 6</code><br>
+                CPython implementation detail: For CPython, id(x) is the memory address where x is stored.
+                
+                An object’s type determines the operations that the object supports (e.g., “does it have a length?”) and also defines the possible values for objects of that type. <br>The type() function returns an object’s type (which is an object itself).<br>
+                Like its identity, an object’s type is also unchangeable. [1]<br>
+                
+                The value of some objects can change. Objects whose value can change are said to be mutable; objects whose value is unchangeable once they are created are called immutable.<br> The value of an immutable container object that contains a reference to a <br>
+                mutable object can change when the latter’s value is changed; however the container is still considered immutable, because the collection of objects it contains cannot be changed. So, immutability is not strictly the same as having an unchangeable value, it is more subtle.<br> An object’s 
+                mutability is determined by its type; for instance, numbers, strings and tuples are immutable, while dictionaries and lists are mutable.<br>
+                
+                Objects are never explicitly destroyed; however, when they become unreachable they may be garbage-collected. An implementation is allowed to postpone garbage collection or omit it altogether — it is a matter of implementation quality how garbage collection is implemented, as long as no 
+                objects are collected that are still reachable.<br>
+                
+                CPython implementation detail: CPython currently uses a reference-counting scheme with (optional) delayed detection of cyclically linked garbage, which collects most objects as soon as they become unreachable, but is not guaranteed to collect garbage containing circular references. See 
+                the documentation of the gc module for information on controlling the collection of cyclic garbage. Other implementations act differently and CPython may change. Do not depend on immediate finalization of objects when they become unreachable (so you should always close files explicitly).<br>
+                
+                Note that the use of the implementation’s tracing or debugging facilities may keep objects alive that would normally be collectable. Also note that catching an exception with a try…except statement may keep objects alive.<br>
+                
+                Some objects contain references to “external” resources such as open files or windows. It is understood that these resources are freed when the object is garbage-collected, but since garbage collection is not guaranteed to happen, such objects also provide an explicit way to release the 
+                external resource, usually a close() method. Programs are strongly recommended to explicitly close such objects. The try…finally statement and the with statement provide convenient ways to do this.<br>
+                
+                Some objects contain references to other objects; these are called containers. Examples of containers are tuples, lists and dictionaries. The references are part of a container’s value. In most cases, when we talk about the value of a container, we imply the values, not the identities of 
+                the contained objects; however, when we talk about the mutability of a container, only the identities of the immediately contained objects are implied. So, if an immutable container (like a tuple) contains a reference to a mutable object, its value changes if that mutable object is changed.<br>
+                
+                Types affect almost all aspects of object behavior. <br>Even the importance of object identity is affected in some sense: for immutable types, operations that compute new values may actually return a reference to any existing object with the same type and value, while for mutable objects this is 
+                not allowed. E.g., after a = 1; b = 1, a and b may or may not refer to the same object with the value one, depending on the implementation, but after c = []; d = [], c and d are guaranteed to refer to two different, unique, newly created empty lists. (Note that c = d = [] assigns the same object to both c and d.)</p><br><br>
+        </section>
+
+        <section class="main-section" id="The_standard_type_hierarchy">
+            <header>The standard type hierarchy</header><br>
+            <p id="someId">Below is a list of the types that are built into Python. Extension modules (written in C, Java, or other languages, depending on the implementation) can define additional types. Future versions of Python may add types to the type hierarchy (e.g., rational numbers, efficiently stored arrays of integers, etc.), 
+            although such additions will often be provided via the standard library instead.
+            Some of the type descriptions below contain a paragraph listing ‘special attributes.’ These are attributes that provide access to the implementation and are not intended for general use. Their definition may change in the future.</p><br><br>
+        </section>
+
+        <section class="main-section" id="Expressions">
+            <header>Expressions</header><br>
+            <p id="someId">This chapter explains the meaning of the elements of expressions in Python.<br>
+
+                Syntax Notes: In this and the following chapters, extended BNF notation will be used to describe syntax, not lexical analysis. When (one alternative of) a syntax rule has the form<br>
+                
+                name ::=  othername
+                and no semantics are given, the semantics of this form of name are the same as for othername.<br>
+                
+                6.1. Arithmetic conversions
+                When a description of an arithmetic operator below uses the phrase “the numeric arguments are converted to a common type”, this means that the operator implementation for built-in types works as follows:<br>
+                
+                If either argument is a complex number, the other is converted to complex;<br>
+                
+                otherwise, if either argument is a floating-point number, the other is converted to floating point;
+                
+                otherwise, both must be integers and no conversion is necessary.<br>
+                
+                Some additional rules apply for certain operators (e.g., a string as a left argument to the ‘%’ operator). Extensions must define their own conversion behavior.<br>
+                <br>
+                6.2. Atoms
+                Atoms are the most basic elements of expressions. The simplest atoms are identifiers or literals. Forms enclosed in parentheses, brackets or braces are also categorized syntactically as atoms. The syntax for atoms is:
+                
+                atom      ::=  identifier | literal | enclosure
+                enclosure ::=  parenth_form | list_display | dict_display | set_display
+                | generator_expression | yield_atom
+                6.2.1. Identifiers (Names)
+                An identifier occurring as an atom is a name. See section Identifiers and keywords for lexical definition and section Naming and binding for documentation of naming and binding.
+                
+                When the name is bound to an object, evaluation of the atom yields that object. When a name is not bound, an attempt to evaluate it raises a NameError exception.<br>
+                <br>
+                <p id="someId">6.2.1.1. Private name mangling
+                When an identifier that textually occurs in a class definition begins with two or more underscore characters and does not end in two or more underscores, it is considered a private name of that class.
+                
+                See also The class specifications.
+                More precisely, private names are transformed to a longer form before code is generated for them. If the transformed name is longer than 255 characters, implementation-defined truncation may happen.
+                
+                The transformation is independent of the syntactical context in which the identifier is used but only the following private identifiers are mangled:
+                
+                Any name used as the name of a variable that is assigned or read or any name of an attribute being accessed.
+                
+                The __name__ attribute of nested functions, classes, and type aliases is however not mangled.
+                
+                The name of imported modules, e.g., __spam in import __spam. If the module is part of a package (i.e., its name contains a dot), the name is not mangled, e.g., the __foo in import __foo.bar is not mangled.
+                
+                The name of an imported member, e.g., __f in from spam import __f.
+                
+                The transformation rule is defined as follows:
+                
+                The class name, with leading underscores removed and a single leading underscore inserted, is inserted in front of the identifier, e.g., the identifier __spam occurring in a class named Foo, _Foo or __Foo is transformed to _Foo__spam.
+                
+                If the class name consists only of underscores, the transformation is the identity, e.g., the identifier __spam occurring in a class named _ or __ is left as is.</p>
+                <br>
+                6.2.2. Literals
+                Python supports string and bytes literals and various numeric literals:
+                
+                literal ::=  stringliteral | bytesliteral
+                | integer | floatnumber | imagnumber
+                Evaluation of a literal yields an object of the given type (string, bytes, integer, floating-point number, complex number) with the given value. The value may be approximated in the case of floating-point and imaginary (complex) literals. See section Literals for details.
+                
+                All literals correspond to immutable data types, and hence the object’s identity is less important than its value. Multiple evaluations of literals with the same value (either the same occurrence in the program text or a different occurrence) may obtain the same object or a different object with the same value.
+                <br>
+                <span id="anc4">6.2.3. Parenthesized forms</span><br>
+                A parenthesized form is an optional expression list enclosed in parentheses:
+                
+                parenth_form ::=  "(" [starred_expression] ")"
+                A parenthesized expression list yields whatever that expression list yields: if the list contains at least one comma, it yields a tuple; otherwise, it yields the single expression that makes up the expression list.
+                
+                An empty pair of parentheses yields an empty tuple object. Since tuples are immutable, the same rules as for literals apply (i.e., two occurrences of the empty tuple may or may not yield the same object).
+                
+                Note that tuples are not formed by the parentheses, but rather by use of the comma. The exception is the empty tuple, for which parentheses are required — allowing unparenthesized “nothing” in expressions would cause ambiguities and allow common typos to pass uncaught.
+                <br>
+                <p id="someId">6.2.4. Displays for lists, sets and dictionaries
+                For constructing a list, a set or a dictionary Python provides special syntax called “displays”, each of them in two flavors:
+                
+                either the container contents are listed explicitly, or
+                
+                they are computed via a set of looping and filtering instructions, called a comprehension.
+                
+                Common syntax elements for comprehensions are:
+                
+                comprehension ::=  assignment_expression comp_for
+                comp_for      ::=  ["async"] "for" target_list "in" or_test [comp_iter]
+                comp_iter     ::=  comp_for | comp_if
+                comp_if       ::=  "if" or_test [comp_iter]
+                The comprehension consists of a single expression followed by at least one for clause and zero or more for or if clauses. In this case, the elements of the new container are those that would be produced by considering each of the for or if clauses a block, nesting from left to right, and evaluating the expression 
+                to produce an element each time the innermost block is reached.
+                
+                However, aside from the iterable expression in the leftmost for clause, the comprehension is executed in a separate implicitly nested scope. This ensures that names assigned to in the target list don’t “leak” into the enclosing scope.
+                
+                The iterable expression in the leftmost for clause is evaluated directly in the enclosing scope and then passed as an argument to the implicitly nested scope. Subsequent for clauses and any filter condition in the leftmost for clause cannot be evaluated in the enclosing scope as they may depend on the values 
+                obtained from the leftmost iterable. For example: [x*y for x in range(10) for y in range(x, x+10)].
+                
+                To ensure the comprehension always results in a container of the appropriate type, yield and yield from expressions are prohibited in the implicitly nested scope.
+                
+                Since Python 3.6, in an async def function, an async for clause may be used to iterate over a asynchronous iterator. A comprehension in an async def function may consist of either a for or async for clause following the leading expression, may contain additional for or async for clauses, and may also use await 
+                expressions.
+                
+                If a comprehension contains async for clauses, or if it contains await expressions or other asynchronous comprehensions anywhere except the iterable expression in the leftmost for clause, it is called an asynchronous comprehension. An asynchronous comprehension may suspend the execution of the coroutine function 
+                in which it appears. See also PEP 530.
+                
+                Added in version 3.6: Asynchronous comprehensions were introduced.
+                
+                Changed in version 3.8: yield and yield from prohibited in the implicitly nested scope.
+                
+                Changed in version 3.11: Asynchronous comprehensions are now allowed inside comprehensions in asynchronous functions. Outer comprehensions implicitly become asynchronous.</p>
+                <br>
+                6.2.5. List displays
+                A list display is a possibly empty series of expressions enclosed in square brackets:
+                
+                list_display ::=  "[" [starred_list | comprehension] "]"
+                A list display yields a new list object, the contents being specified by either a list of expressions or a comprehension. When a comma-separated list of expressions is supplied, its elements are evaluated from left to right and placed into the list object in that order. When a comprehension is supplied, the list 
+                is constructed from the elements resulting from the comprehension.
+                <br>
+                6.2.6. Set displays
+                A set display is denoted by curly braces and distinguishable from dictionary displays by the lack of colons separating keys and values:
+                
+                set_display ::=  "{" (starred_list | comprehension) "}"
+                A set display yields a new mutable set object, the contents being specified by either a sequence of expressions or a comprehension. When a comma-separated list of expressions is supplied, its elements are evaluated from left to right and added to the set object. When a comprehension is supplied, the set is constructed 
+                from the elements resulting from the comprehension.
+                
+                An empty set cannot be constructed with {}; this literal constructs an empty dictionary.
+                <br>
+                <p id="someId">6.2.7. Dictionary displays
+                A dictionary display is a possibly empty series of dict items (key/value pairs) enclosed in curly braces:
+                
+                dict_display       ::=  "{" [dict_item_list | dict_comprehension] "}"
+                dict_item_list     ::=  dict_item ("," dict_item)* [","]
+                dict_item          ::=  expression ":" expression | "**" or_expr
+                dict_comprehension ::=  expression ":" expression comp_for
+                A dictionary display yields a new dictionary object.
+                
+                If a comma-separated sequence of dict items is given, they are evaluated from left to right to define the entries of the dictionary: each key object is used as a key into the dictionary to store the corresponding value. This means that you can specify the same key multiple times in the dict item list, and the final 
+                dictionary’s value for that key will be the last one given.
+                
+                A double asterisk ** denotes dictionary unpacking. Its operand must be a mapping. Each mapping item is added to the new dictionary. Later values replace values already set by earlier dict items and earlier dictionary unpackings.
+                
+                Added in version 3.5: Unpacking into dictionary displays, originally proposed by PEP 448.
+                
+                A dict comprehension, in contrast to list and set comprehensions, needs two expressions separated with a colon followed by the usual “for” and “if” clauses. When the comprehension is run, the resulting key and value elements are inserted in the new dictionary in the order they are produced.
+                
+                Restrictions on the types of the key values are listed earlier in section The standard type hierarchy. (To summarize, the key type should be hashable, which excludes all mutable objects.) Clashes between duplicate keys are not detected; the last value (textually rightmost in the display) stored for a given key value prevails.
+                
+                Changed in version 3.8: Prior to Python 3.8, in dict comprehensions, the evaluation order of key and value was not well-defined. In CPython, the value was evaluated before the key. Starting with 3.8, the key is evaluated before the value, as proposed by PEP 572.</p>
+                <br>
+                <span id="anc5">6.2.8. Generator expressions</span>
+                A generator expression is a compact generator notation in parentheses:
+                
+                generator_expression ::=  "(" expression comp_for ")"
+                A generator expression yields a new generator object. Its syntax is the same as for comprehensions, except that it is enclosed in parentheses instead of brackets or curly braces.
+                
+                Variables used in the generator expression are evaluated lazily when the __next__() method is called for the generator object (in the same fashion as normal generators). However, the iterable expression in the leftmost for clause is immediately evaluated, so that an error produced by it will be emitted at the point 
+                where the generator expression is defined, rather than at the point where the first value is retrieved. Subsequent for clauses and any filter condition in the leftmost for clause cannot be evaluated in the enclosing scope as they may depend on the values obtained from the leftmost iterable. For example: (x*y for x in range(10) for y in range(x, x+10)).
+                
+                The parentheses can be omitted on calls with only one argument. See section Calls for details.
+                
+                To avoid interfering with the expected operation of the generator expression itself, yield and yield from expressions are prohibited in the implicitly defined generator.
+                
+                If a generator expression contains either async for clauses or await expressions it is called an asynchronous generator expression. An asynchronous generator expression returns a new asynchronous generator object, which is an asynchronous iterator (see Asynchronous Iterators).
+                
+                Added in version 3.6: Asynchronous generator expressions were introduced.
+                
+                Changed in version 3.7: Prior to Python 3.7, asynchronous generator expressions could only appear in async def coroutines. Starting with 3.7, any function can use asynchronous generator expressions.
+                
+                Changed in version 3.8: yield and yield from prohibited in the implicitly nested scope.
+                <br>
+                6.2.9. Yield expressions
+                yield_atom       ::=  "(" yield_expression ")"
+                yield_from       ::=  "yield" "from" expression
+                yield_expression ::=  "yield" expression_list | yield_from
+                The yield expression is used when defining a generator function or an asynchronous generator function and thus can only be used in the body of a function definition. Using a yield expression in a function’s body causes that function to be a generator function, and using it in an async def function’s body causes that coroutine 
+                function to be an asynchronous generator function. For example:
+                
+                def gen():  # defines a generator function
+                    yield 123
+                
+                async def agen(): # defines an asynchronous generator function
+                    yield 123
+                Due to their side effects on the containing scope, yield expressions are not permitted as part of the implicitly defined scopes used to implement comprehensions and generator expressions.
+                
+                Changed in version 3.8: Yield expressions prohibited in the implicitly nested scopes used to implement comprehensions and generator expressions.
+                
+                Generator functions are described below, while asynchronous generator functions are described separately in section Asynchronous generator functions.
+                
+                When a generator function is called, it returns an iterator known as a generator. That generator then controls the execution of the generator function. The execution starts when one of the generator’s methods is called. At that time, the execution proceeds to the first yield expression, where it is suspended again, returning 
+                the value of expression_list to the generator’s caller, or None if expression_list is omitted. By suspended, we mean that all local state is retained, including the current bindings of local variables, the instruction pointer, the internal evaluation stack, and the state of any exception handling. When the execution is resumed
+                by calling one of the generator’s methods, the function can proceed exactly as if the yield expression were just another external call. The value of the yield expression after resuming depends on the method which resumed the execution. If __next__() is used (typically via either a for or the next() builtin) then the result is None. 
+                Otherwise, if send() is used, then the result will be the value passed in to that method.
+                
+                All of this makes generator functions quite similar to coroutines; they yield multiple times, they have more than one entry point and their execution can be suspended. The only difference is that a generator function cannot control where the execution should continue after it yields; the control is always transferred to the generator’s caller.
+                
+                Yield expressions are allowed anywhere in a try construct. If the generator is not resumed before it is finalized (by reaching a zero reference count or by being garbage collected), the generator-iterator’s close() method will be called, allowing any pending finally clauses to execute.
+                
+
+                When yield from <expr> is used, the supplied expression must be an iterable. The values produced by iterating that iterable are passed directly to the caller of the current generator’s methods. Any values passed in with send() and any exceptions passed in with throw() are passed to the underlying iterator if it has the appropriate methods.
+                If this is not the case, then send() will raise AttributeError or TypeError, while throw() will just raise the passed in exception immediately.
+                
+                When the underlying iterator is complete, the value attribute of the raised StopIteration instance becomes the value of the yield expression. It can be either set explicitly when raising StopIteration, or automatically when the subiterator is a generator (by returning a value from the subgenerator).</p><br><br>
+        </section>
+        
+        <section class="main-section" id="Sequences">
+            <header>Sequences</header><br>
+            <p id="someId">These represent finite ordered sets indexed by non-negative numbers. The built-in function len() returns the number of items of a sequence. When the length of a sequence is n, the index set contains the numbers 0, 1, …, n-1. Item i of sequence a is selected by a[i]. Some sequences, including built-in sequences, 
+                interpret negative subscripts by adding the sequence length. For example, a[-2] equals a[n-2], the second to last item of sequence a with length n.
+
+                Sequences also support slicing: a[i:j] selects all items with index k such that i <= k < j. When used as an expression, a slice is a sequence of the same type. The comment above about negative indexes also applies to negative slice positions.
+                
+                Some sequences also support “extended slicing” with a third “step” parameter: a[i:j:k] selects all items of a with index x where x = i + n*k, n >= 0 and i <= x < j.
+                
+                Sequences are distinguished according to their mutability:
+                <br>
+                <span id="anc7">3.2.5.1. Immutable sequences</span>
+                An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
+                
+                The following types are immutable sequences:
+                
+                Strings
+                A string is a sequence of values that represent Unicode code points. All the code points in the range U+0000 - U+10FFFF can be represented in a string. Python doesn’t have a char type; instead, every code point in the string is represented as a string object with length 1. The built-in function ord() converts a 
+                code point from its string form to an integer in the range 0 - 10FFFF; chr() converts an integer in the range 0 - 10FFFF to the corresponding length 1 string object. str.encode() can be used to convert a str to bytes using the given text encoding, and bytes.decode() can be used to achieve the opposite.
+                <br>
+                Tuples
+                The items of a tuple are arbitrary Python objects. Tuples of two or more items are formed by comma-separated lists of expressions. A tuple of one item (a ‘singleton’) can be formed by affixing a comma to an expression (an expression by itself does not create a tuple, since parentheses must be usable for grouping 
+                of expressions). An empty tuple can be formed by an empty pair of parentheses.
+                <br>
+                Bytes
+                A bytes object is an immutable array. The items are 8-bit bytes, represented by integers in the range 0 <= x < 256. Bytes literals (like b'abc') and the built-in bytes() constructor can be used to create bytes objects. Also, bytes objects can be decoded to strings via the decode() method.
+                <br>
+                <span id="anc8">3.2.5.2. Mutable sequences</span>
+                Mutable sequences can be changed after they are created. The subscription and slicing notations can be used as the target of assignment and del (delete) statements.
+                
+                Note The collections and array module provide additional examples of mutable sequence types.
+                There are currently two intrinsic mutable sequence types:
+                <br>
+                Lists
+                The items of a list are arbitrary Python objects. Lists are formed by placing a comma-separated list of expressions in square brackets. (Note that there are no special cases needed to form lists of length 0 or 1.)
+                
+                Byte Arrays
+                A bytearray object is a mutable array. They are created by the built-in bytearray() constructor. Aside from being mutable (and hence unhashable), byte arrays otherwise provide the same interface and functionality as immutable bytes objects</p><br><br>
+        </section>
+
+        <section class="main-section" id="numbers_Number">
+            <header>numbers Number</header><br>
+            <p id="someId">These are created by numeric literals and returned as results by arithmetic operators and arithmetic built-in functions. Numeric objects are immutable; once created their value never changes. Python numbers are of course strongly related to mathematical numbers, but subject to the limitations of numerical representation in computers.
+
+                The string representations of the numeric classes, computed by __repr__() and __str__(), have the following properties:
+                
+                They are valid numeric literals which, when passed to their class constructor, produce an object having the value of the original numeric.
+                
+                The representation is in base 10, when possible.
+                
+                Leading zeros, possibly excepting a single zero before a decimal point, are not shown.
+                
+                Trailing zeros, possibly excepting a single zero after a decimal point, are not shown.
+                
+                A sign is shown only when the number is negative.
+                
+                Python distinguishes between integers, floating-point numbers, and complex numbers:
+                <br>
+                <span id="anc10">3.2.4.1. numbers.Integral</span><br>
+                These represent elements from the mathematical set of integers (positive and negative).
+                
+                <p id="someId">Note The rules for integer representation are intended to give the most meaningful interpretation of shift and mask operations involving negative integers.
+                There are two types of integers:
+                
+                Integers (int)
+                These represent numbers in an unlimited range, subject to available (virtual) memory only. For the purpose of shift and mask operations, a binary representation is assumed, and negative numbers are represented in a variant of 2’s complement which gives the illusion of an infinite string of sign bits extending to the left.
+                
+                Booleans (bool)
+                These represent the truth values False and True. The two objects representing the values False and True are the only Boolean objects. The Boolean type is a subtype of the integer type, and Boolean values behave like the values 0 and 1, respectively, in almost all contexts, the exception being that when converted to a string, the 
+                strings "False" or "True" are returned, respectively.</p>
+                <br>
+                <span id="anc11">3.2.4.2. numbers.Real (float)</span><br>
+                These represent machine-level double precision floating-point numbers. You are at the mercy of the underlying machine architecture (and C or Java implementation) for the accepted range and handling of overflow. Python does not support single-precision floating-point numbers; the savings in processor and memory usage that are usually
+                the reason for using these are dwarfed by the overhead of using objects in Python, so there is no reason to complicate the language with two kinds of floating-point numbers.
+                <br>
+                3.2.4.3. numbers.Complex (complex)
+                These represent complex numbers as a pair of machine-level double precision floating-point numbers. The same caveats apply as for floating-point numbers. The real and imaginary parts of a complex number z can be retrieved through the read-only attributes z.real and z.imag.</p><br><br>
+                <ul>
+                    <li><a href="#anc1">Objects, values and types</a></li>
+                    <li><a href="#anc2">The standard type hierarchy</a></li>
+                    <li><a href="#anc3">Expressions</a></li>
+                    <li><a href="#anc4">Parenthesized forms</a></li>
+                    <li><a href="#anc5">Generator expressions</a></li>
+                </ul>
+        </section>
+    
+    </main>
 </body>
 </html>
