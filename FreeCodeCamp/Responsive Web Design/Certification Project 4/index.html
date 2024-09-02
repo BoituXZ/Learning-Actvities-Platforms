@@ -4,12 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Landing Page</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="page-body">
-        <header id="header">
-            <img 
+        <header id="header" class="header">
+            <img src="./logo.png" id="header-img">
+            <nav id="nav-bar">
+                <ul>
+                    <li class="nav-link" href="#features"><a href="#features">Features</a></li>
+                    <li class="nav-link" href="#specifications"><a href="#specifications">Specifications</a></li>
+                    <li class="nav-link" href="#price"><a href="#">Price</a></li>
+                </ul>
+            </nav>
         </header>
+        <main>
+            <div class="intro-text">
+                <h1>The PSP</h1>
+                <p>A Marvel</p>
+            </div>
+            <div class="features" id="features">
+                <div class="features-text">
+                    <h2>Features</h2>
+                    <p>
+                        In Japanese market PSPs, an application called x-Radar 
+                        Portable came preloaded starting with firmware version 6.35 
+                        (January 2010). This is a port of a map software for PCs and
+                        mobile phones called x-Radar, developed by PetaMap. x-Radar 
+                        Portable gets the location of the PSP on a map and obtains 
+                        information of places around the user. It determines the location 
+                        through "PlaceEngine" technology, via wireless LAN spots.
+                    </p>
+                </div>
+            </div>
+            <div class="specifications" id="specifications">
+                <div class="specifications-text">
+                    <h2>Specifications</h2>
+                    <p>
+                        The PSP is powered by an 1800 mAh battery (1200 mAh on the 
+                        2000 and 3000 models) that provides between four and six hours 
+                        of gameplay, between four and five hours of video playback, or 
+                        between eight and eleven hours of audio playback. The battery 
+                        takes approximately 1.5 hours to charge and lasts approximately 
+                        500 charges. The PSP is equipped with a two-pin docking connector 
+                        on the bottom of the console allowing users to connect the PSP to 
+                        a television or a monitor using a component or composite cable. 
+                        The PSP Slim features an AV output on the top of the console, 
+                        allowing users to play games and watch videos on a television screen.
+                    </p>
+                </div>
+            </div>
+            <div class="price" id="price">
+                <div class="price-text">
+                    <h2>Price</h2>
+                    <p>
+                        The PSP was released in Japan on December 12, 2004, in North 
+                        America on March 24, 2005, and in the PAL region on September 1, 
+                        2005. It primarily competed with the Nintendo DS, as part of the 
+                        seventh generation of video game consoles. The PlayStation Portable 
+                        was the most powerful portable console when launched. It was the 
+                        first real competitor to Nintendo's handheld domination, where many 
+                        challengers, such as SNK's Neo Geo Pocket and Nokia's N-Gage, failed.
+                    </p>
+                </div>
+            </div>
+            <div class="video-wrapper">
+                <video id="video" src="https://www.youtube.com/embed/WYkuS2Q6n3k" controls>
+                    <iframe  width="678" height="391" src="https://www.youtube.com/embed/WYkuS2Q6n3k" title="Gaming with a PSP in 2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                </video>
+            </div>
+            <div class="form-wrapper">
+                <form id="form" action="https://www.freecodecamp.com/email-submit">
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="Interested in one? Let us know!" required>
+                    <input type="submit" id="submit" value="Submit">
+                </form>
+            </div>
+        </main>
     </div>
 </body>
 </html>
